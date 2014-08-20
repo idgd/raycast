@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class IDRender;
+@class IDTicker;
+@class IDRectangle;
+@class IDRay;
+@class IDCamera;
+
 @interface ViewController : UIViewController
 
+@property (strong,nonatomic) IDRender *map;
+@property (strong,nonatomic) IDTicker *tick;
 
 @end
 

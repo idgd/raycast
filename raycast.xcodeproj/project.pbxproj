@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C41C90A19903BE00059FD19 /* IDRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C41C90919903BE00059FD19 /* IDRectangle.m */; };
+		9C775ACB19903E4E001E7C7B /* IDRay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775ACA19903E4E001E7C7B /* IDRay.m */; };
+		9C775ACE19903EFB001E7C7B /* IDCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775ACD19903EFB001E7C7B /* IDCamera.m */; };
+		9C775AD119903F8F001E7C7B /* IDRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD019903F8F001E7C7B /* IDRender.m */; };
+		9C775AD6199067A8001E7C7B /* IDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD5199067A8001E7C7B /* IDView.m */; };
+		9C775AD919906FB5001E7C7B /* IDLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD819906FB5001E7C7B /* IDLine.m */; };
 		9CF1797C19903323009BDD8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1797B19903323009BDD8D /* main.m */; };
 		9CF1797F19903323009BDD8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1797E19903323009BDD8D /* AppDelegate.m */; };
 		9CF1798219903323009BDD8D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1798119903323009BDD8D /* ViewController.m */; };
 		9CF1798519903323009BDD8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF1798319903323009BDD8D /* Main.storyboard */; };
 		9CF1798719903323009BDD8D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF1798619903323009BDD8D /* Images.xcassets */; };
 		9CF1799319903324009BDD8D /* raycastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1799219903324009BDD8D /* raycastTests.m */; };
+		9CF1799E199037DC009BDD8D /* IDTicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1799D199037DC009BDD8D /* IDTicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +33,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C41C90819903BE00059FD19 /* IDRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRectangle.h; sourceTree = "<group>"; };
+		9C41C90919903BE00059FD19 /* IDRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRectangle.m; sourceTree = "<group>"; };
+		9C775AC919903E4E001E7C7B /* IDRay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRay.h; sourceTree = "<group>"; };
+		9C775ACA19903E4E001E7C7B /* IDRay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRay.m; sourceTree = "<group>"; };
+		9C775ACC19903EFB001E7C7B /* IDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCamera.h; sourceTree = "<group>"; };
+		9C775ACD19903EFB001E7C7B /* IDCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCamera.m; sourceTree = "<group>"; };
+		9C775ACF19903F8F001E7C7B /* IDRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRender.h; sourceTree = "<group>"; };
+		9C775AD019903F8F001E7C7B /* IDRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRender.m; sourceTree = "<group>"; };
+		9C775AD4199067A8001E7C7B /* IDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDView.h; sourceTree = "<group>"; };
+		9C775AD5199067A8001E7C7B /* IDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDView.m; sourceTree = "<group>"; };
+		9C775AD719906FB5001E7C7B /* IDLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLine.h; sourceTree = "<group>"; };
+		9C775AD819906FB5001E7C7B /* IDLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLine.m; sourceTree = "<group>"; };
 		9CF1797619903323009BDD8D /* raycast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = raycast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF1797A19903323009BDD8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CF1797B19903323009BDD8D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -38,6 +57,8 @@
 		9CF1798C19903324009BDD8D /* raycastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = raycastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF1799119903324009BDD8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CF1799219903324009BDD8D /* raycastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = raycastTests.m; sourceTree = "<group>"; };
+		9CF1799C199037DC009BDD8D /* IDTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTicker.h; sourceTree = "<group>"; };
+		9CF1799D199037DC009BDD8D /* IDTicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C775AC819903E02001E7C7B /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				9C41C90819903BE00059FD19 /* IDRectangle.h */,
+				9C41C90919903BE00059FD19 /* IDRectangle.m */,
+				9C775AC919903E4E001E7C7B /* IDRay.h */,
+				9C775ACA19903E4E001E7C7B /* IDRay.m */,
+				9C775ACC19903EFB001E7C7B /* IDCamera.h */,
+				9C775ACD19903EFB001E7C7B /* IDCamera.m */,
+				9C775AD719906FB5001E7C7B /* IDLine.h */,
+				9C775AD819906FB5001E7C7B /* IDLine.m */,
+			);
+			name = DataTypes;
+			sourceTree = "<group>";
+		};
 		9CF1796D19903323009BDD8D = {
 			isa = PBXGroup;
 			children = (
@@ -79,10 +115,17 @@
 		9CF1797819903323009BDD8D /* raycast */ = {
 			isa = PBXGroup;
 			children = (
+				9C775ACF19903F8F001E7C7B /* IDRender.h */,
+				9C775AD019903F8F001E7C7B /* IDRender.m */,
+				9CF1799C199037DC009BDD8D /* IDTicker.h */,
+				9CF1799D199037DC009BDD8D /* IDTicker.m */,
+				9C775AC819903E02001E7C7B /* DataTypes */,
 				9CF1797D19903323009BDD8D /* AppDelegate.h */,
 				9CF1797E19903323009BDD8D /* AppDelegate.m */,
 				9CF1798019903323009BDD8D /* ViewController.h */,
 				9CF1798119903323009BDD8D /* ViewController.m */,
+				9C775AD4199067A8001E7C7B /* IDView.h */,
+				9C775AD5199067A8001E7C7B /* IDView.m */,
 				9CF1798319903323009BDD8D /* Main.storyboard */,
 				9CF1798619903323009BDD8D /* Images.xcassets */,
 				9CF1797919903323009BDD8D /* Supporting Files */,
@@ -215,7 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF1799E199037DC009BDD8D /* IDTicker.m in Sources */,
 				9CF1798219903323009BDD8D /* ViewController.m in Sources */,
+				9C775AD6199067A8001E7C7B /* IDView.m in Sources */,
+				9C775AD119903F8F001E7C7B /* IDRender.m in Sources */,
+				9C775AD919906FB5001E7C7B /* IDLine.m in Sources */,
+				9C41C90A19903BE00059FD19 /* IDRectangle.m in Sources */,
+				9C775ACE19903EFB001E7C7B /* IDCamera.m in Sources */,
+				9C775ACB19903E4E001E7C7B /* IDRay.m in Sources */,
 				9CF1797F19903323009BDD8D /* AppDelegate.m in Sources */,
 				9CF1797C19903323009BDD8D /* main.m in Sources */,
 			);
@@ -335,6 +385,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = raycast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -346,6 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = raycast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -404,6 +456,7 @@
 				9CF1799819903324009BDD8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9CF1799919903324009BDD8D /* Build configuration list for PBXNativeTarget "raycastTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +465,7 @@
 				9CF1799B19903324009BDD8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
