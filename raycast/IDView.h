@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class IDRender;
+
 @interface IDView : UIView
 
 @property (nonatomic,copy) NSArray *renderPaths;

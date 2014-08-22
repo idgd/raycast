@@ -13,6 +13,7 @@
 		9C775AD119903F8F001E7C7B /* IDRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD019903F8F001E7C7B /* IDRender.m */; };
 		9C775AD6199067A8001E7C7B /* IDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD5199067A8001E7C7B /* IDView.m */; };
 		9C775AD919906FB5001E7C7B /* IDLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD819906FB5001E7C7B /* IDLine.m */; };
+		9CD0DB7C19A4782B00BBD49B /* IDRenderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD0DB7B19A4782B00BBD49B /* IDRenderLine.m */; };
 		9CF1797C19903323009BDD8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1797B19903323009BDD8D /* main.m */; };
 		9CF1797F19903323009BDD8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1797E19903323009BDD8D /* AppDelegate.m */; };
 		9CF1798219903323009BDD8D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1798119903323009BDD8D /* ViewController.m */; };
@@ -45,6 +46,8 @@
 		9C775AD5199067A8001E7C7B /* IDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDView.m; sourceTree = "<group>"; };
 		9C775AD719906FB5001E7C7B /* IDLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLine.h; sourceTree = "<group>"; };
 		9C775AD819906FB5001E7C7B /* IDLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLine.m; sourceTree = "<group>"; };
+		9CD0DB7A19A4782B00BBD49B /* IDRenderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRenderLine.h; sourceTree = "<group>"; };
+		9CD0DB7B19A4782B00BBD49B /* IDRenderLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRenderLine.m; sourceTree = "<group>"; };
 		9CF1797619903323009BDD8D /* raycast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = raycast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF1797A19903323009BDD8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CF1797B19903323009BDD8D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 		9C775AC819903E02001E7C7B /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				9CD0DB7A19A4782B00BBD49B /* IDRenderLine.h */,
+				9CD0DB7B19A4782B00BBD49B /* IDRenderLine.m */,
 				9C41C90819903BE00059FD19 /* IDRectangle.h */,
 				9C41C90919903BE00059FD19 /* IDRectangle.m */,
 				9C775AC919903E4E001E7C7B /* IDRay.h */,
@@ -268,6 +273,7 @@
 				9C775ACB19903E4E001E7C7B /* IDRay.m in Sources */,
 				9CF1797F19903323009BDD8D /* AppDelegate.m in Sources */,
 				9CF1797C19903323009BDD8D /* main.m in Sources */,
+				9CD0DB7C19A4782B00BBD49B /* IDRenderLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
 
 @property (strong,nonatomic) IDRender *map;
 @property (strong,nonatomic) IDTicker *tick;
+@property (nonatomic) UIPanGestureRecognizer *tapGR;
 
 @end
 

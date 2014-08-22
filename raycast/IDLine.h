@@ -14,4 +14,7 @@
 @property (nonatomic) CGPoint start;
 @property (nonatomic) CGPoint end;
 
+@property (nonatomic) CGFloat M;
+@property (nonatomic) CGFloat B;
+
 @end

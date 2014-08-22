@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
 
 @class IDRender;
-
 @class IDTicker;
 
 @protocol IDTickerDelegate <NSObject>
@@ -22,7 +22,7 @@
 @interface IDTicker : NSObject
 
 @property (nonatomic,strong) CADisplayLink *ticker;
-@property (nonatomic, weak) id<IDTickerDelegate> delegate;
+@property (nonatomic,weak) id<IDTickerDelegate> delegate;
 
 @property (nonatomic) IDRender *render;
 
