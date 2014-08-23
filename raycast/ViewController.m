@@ -30,44 +30,35 @@
 	if(self.location.x <= self.view.bounds.size.width / 2.0) {
 		
 		CGFloat speed = 1.0/500.0;
+    
+    CGPoint newPoint = CGPointMake(self.map.player.POS.x
+                                   - cos(self.map.player.ROT) * self.translation.y * speed
+                                   - sin(self.map.player.ROT) * self.translation.x * speed,
+                                   self.map.player.POS.y
+                                   - sin(self.map.player.ROT) * self.translation.y * speed
+                                   + cos(self.map.player.ROT) * self.translation.x * speed);
+    
+    IDLine *playerLine = [[IDLine alloc]init];
+    playerLine.start = self.map.player.POS;
+    playerLine.end = newPoint;
 		
 		for (IDRectangle *collRECT in self.map.blocks) {
 			
-			CGPoint gak = CGPointMake(self.map.player.POS.x -
-																cos(self.map.player.ROT) *
-																self.translation.y * speed,
-																self.map.player.POS.y -
-																sin(self.map.player.ROT) *
-																self.translation.y * speed);
-			
-			gak = CGPointMake(gak.x -
-												sin(self.map.player.ROT) *
-												self.translation.x * speed,
-												gak.y +
-												cos(self.map.player.ROT) *
-												self.translation.x * speed);
-			
-			if ([collRECT containsPoint:gak]) {
-				
-				IDLine *playerLine = [[IDLine alloc]init];
-				playerLine.start = self.map.player.POS;
-				playerLine.end = gak;
+			if ([collRECT containsPoint:newPoint]) {
 				
 				BOOL beep = NO;
 				
-				CGPoint intersectionPoint = [collRECT intersectionWithPoint:playerLine
+				/*CGPoint intersectionPoint = */[collRECT intersectionWithPoint:playerLine
 																															 flag:&beep];
 				if (beep) {
-					self.map.player.POS = intersectionPoint;
+					newPoint = self.map.player.POS; //Well... this works better than using the intersection point :P Ideally we'd use the intersection point + a small margin of error, but this simulates that in an ok way.
 				}
-				
-			} else {
-				
-				self.map.player.POS = gak;
 				
 			}
 			
 		}
+    
+    self.map.player.POS = newPoint;
 		
 		//Forward vector:
 		//X = cos(theta), Y = sin(theta)
