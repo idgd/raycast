@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B14568E19A93614002AF42E /* IDGraphicsUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B14568C19A93614002AF42E /* IDGraphicsUtilities.c */; };
 		9C41C90A19903BE00059FD19 /* IDRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C41C90919903BE00059FD19 /* IDRectangle.m */; };
 		9C775ACB19903E4E001E7C7B /* IDRay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775ACA19903E4E001E7C7B /* IDRay.m */; };
 		9C775ACE19903EFB001E7C7B /* IDCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775ACD19903EFB001E7C7B /* IDCamera.m */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B14568C19A93614002AF42E /* IDGraphicsUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IDGraphicsUtilities.c; sourceTree = "<group>"; };
+		7B14568D19A93614002AF42E /* IDGraphicsUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDGraphicsUtilities.h; sourceTree = "<group>"; };
 		9C41C90819903BE00059FD19 /* IDRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRectangle.h; sourceTree = "<group>"; };
 		9C41C90919903BE00059FD19 /* IDRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRectangle.m; sourceTree = "<group>"; };
 		9C775AC919903E4E001E7C7B /* IDRay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRay.h; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 		9CF1797819903323009BDD8D /* raycast */ = {
 			isa = PBXGroup;
 			children = (
+				7B14568C19A93614002AF42E /* IDGraphicsUtilities.c */,
+				7B14568D19A93614002AF42E /* IDGraphicsUtilities.h */,
 				9C775ACF19903F8F001E7C7B /* IDRender.h */,
 				9C775AD019903F8F001E7C7B /* IDRender.m */,
 				9CF1799C199037DC009BDD8D /* IDTicker.h */,
@@ -271,6 +276,7 @@
 				9C41C90A19903BE00059FD19 /* IDRectangle.m in Sources */,
 				9C775ACE19903EFB001E7C7B /* IDCamera.m in Sources */,
 				9C775ACB19903E4E001E7C7B /* IDRay.m in Sources */,
+				7B14568E19A93614002AF42E /* IDGraphicsUtilities.c in Sources */,
 				9CF1797F19903323009BDD8D /* AppDelegate.m in Sources */,
 				9CF1797C19903323009BDD8D /* main.m in Sources */,
 				9CD0DB7C19A4782B00BBD49B /* IDRenderLine.m in Sources */,
