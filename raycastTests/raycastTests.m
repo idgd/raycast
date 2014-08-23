@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "IDGraphicsUtilities.h"
 
 @interface raycastTests : XCTestCase
 
@@ -17,17 +18,56 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
     XCTAssert(YES, @"Pass");
+}
+
+- (void)testRotation1 {
+  CGAffineTransform rotation = CGAffineTransformMakeRotation(30.0 * M_PI / 180.0);
+  CGPoint point = CGPointMake(4.0, 3.0);
+  CGPoint newPoint = CGAffineTransformApplyToPoint(rotation, point);
+  XCTAssertEqualWithAccuracy(sqrt(point.x * point.x + point.y * point.y),
+                             sqrt(newPoint.x * newPoint.x + newPoint.y * newPoint.y), 0.00001);
+  
+}
+
+- (void)testRotation2 {
+  CGAffineTransform rotation = CGAffineTransformMakeRotation(-30.0 * M_PI / 180.0);
+  CGPoint point = CGPointMake(4.0, 3.0);
+  CGPoint newPoint = CGAffineTransformApplyToPoint(rotation, point);
+  XCTAssertEqualWithAccuracy(sqrt(point.x * point.x + point.y * point.y),
+                             sqrt(newPoint.x * newPoint.x + newPoint.y * newPoint.y), 0.00001);
+  
+}
+
+- (void)testTranslation {
+  CGAffineTransform rotation = CGAffineTransformMakeTranslation(-3.0, 3.0);
+  CGPoint point = CGPointMake(4.0, 3.0);
+  CGPoint newPoint = CGAffineTransformApplyToPoint(rotation, point);
+  XCTAssertEqualWithAccuracy(newPoint.x,
+                             point.x - 3.0, 0.00001);
+  XCTAssertEqualWithAccuracy(newPoint.y,
+                             point.y + 3.0, 0.00001);
+  
+}
+
+- (void)testTranslationAndRotation {
+  CGAffineTransform translation = CGAffineTransformMakeTranslation(-3.0, 3.0);
+  CGAffineTransform rotation = CGAffineTransformMakeRotation(30.0 * M_PI / 180.0);
+  CGAffineTransform transform = CGAffineTransformConcat(rotation, translation);
+  CGPoint point = CGPointMake(4.0, 3.0);
+  CGPoint oldOrigin = CGPointMake(0.0, 0.0);
+  CGPoint newPoint = CGAffineTransformApplyToPoint(transform, point);
+  CGPoint newOrigin = CGAffineTransformApplyToPoint(transform, oldOrigin);
+  CGPoint delta = CGPointMake(newPoint.x - newOrigin.x, newPoint.y - newOrigin.y);
+  XCTAssertEqualWithAccuracy(sqrt(point.x * point.x + point.y * point.y),
+                             sqrt(delta.x * delta.x + delta.y * delta.y), 0.00001);
 }
 
 - (void)testPerformanceExample {

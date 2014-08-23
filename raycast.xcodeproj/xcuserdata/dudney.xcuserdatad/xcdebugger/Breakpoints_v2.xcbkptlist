@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "raycastTests/raycastTests.m"
+            timestampString = "430519008.914879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-testTranslationAndRotation"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.711052"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "589">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.711218"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "693">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.711344"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "1098">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.711467"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "1217">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.711644"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "1366">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.711808"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "2235">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.711965"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "2264">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[raycastTests testTranslationAndRotation]"
+                  moduleName = "raycastTests"
+                  urlString = "file:///Users/dudney/Development/raycast/raycastTests/raycastTests.m"
+                  timestampString = "430519042.712137"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "2407">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
