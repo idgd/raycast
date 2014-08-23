@@ -90,12 +90,19 @@
 	CGFloat maxX = MAX(self.start.x, self.end.x);
 	CGFloat maxY = MAX(self.start.y, self.end.y);
 
-  if ((interceptX <= maxX && interceptX >= minX) && (interceptY <= maxY && interceptY >= minY)) {
-    if(flag) {
+  if ((interceptX <= maxX && interceptX >= minX) &&
+			(interceptY <= maxY && interceptY >= minY)) {
+		
+    if (flag) {
+			
       *flag = YES;
+			
     }
+		
   } else {
+		
     foo = CGPointMake(0.0, 0.0);
+		
   }
 	
 	return foo;
