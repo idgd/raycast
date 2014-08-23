@@ -41,7 +41,7 @@
 }
 
 - (CGPoint)intersectionPoint:(IDLine *)otherLine intersects:(BOOL *)flag {
-	
+  
 	CGFloat thisSlope = [self slope];
 	CGFloat otherSlope = [otherLine slope];
 	CGFloat thisIntercept = [self intercept];
@@ -70,30 +70,30 @@
 	} else if (thisSlope >= MAXFLOAT - 1 ||
 						 thisSlope <= -MAXFLOAT + 1) {
 		
-		interceptX = (thisIntercept - otherIntercept) /
-		(otherSlope - thisSlope);
+		interceptX = self.start.x;
 		
-		interceptY = (otherSlope * thisIntercept - thisSlope * otherIntercept) /
-		(otherSlope - thisSlope);
+		interceptY = otherSlope * self.start.x + otherIntercept;
 		
 	} else {
 		
 		interceptX = (otherIntercept - thisIntercept) / (thisSlope - otherSlope);
-		interceptY = thisSlope * interceptX + thisIntercept;
+		interceptY = (thisSlope * otherIntercept - otherSlope * thisIntercept) / (thisSlope - otherSlope);
 		
 	}
 	
 	CGPoint foo = CGPointMake(interceptX, interceptY);
 	
-  CGFloat minSelfX = MIN(self.start.x, self.end.x);
-  CGFloat minSelfY = MIN(self.start.y, self.end.y);
-  CGFloat maxSelfX = MAX(self.start.x, self.end.x);
-  CGFloat maxSelfY = MAX(self.start.y, self.end.y);
+  CGFloat bias = 0.01;
+  
+  CGFloat minSelfX = MIN(self.start.x, self.end.x) - bias;
+  CGFloat minSelfY = MIN(self.start.y, self.end.y) - bias;
+  CGFloat maxSelfX = MAX(self.start.x, self.end.x) + bias;
+  CGFloat maxSelfY = MAX(self.start.y, self.end.y) + bias;
 
-  CGFloat minOtherX = MIN(otherLine.start.x, otherLine.end.x);
-  CGFloat minOtherY = MIN(otherLine.start.y, otherLine.end.y);
-  CGFloat maxOtherX = MAX(otherLine.start.x, otherLine.end.x);
-  CGFloat maxOtherY = MAX(otherLine.start.y, otherLine.end.y);
+  CGFloat minOtherX = MIN(otherLine.start.x, otherLine.end.x) - bias;
+  CGFloat minOtherY = MIN(otherLine.start.y, otherLine.end.y) - bias;
+  CGFloat maxOtherX = MAX(otherLine.start.x, otherLine.end.x) + bias;
+  CGFloat maxOtherY = MAX(otherLine.start.y, otherLine.end.y) + bias;
 
   if ((interceptX <= maxSelfX && interceptX >= minSelfX) &&
       (interceptY <= maxSelfY && interceptY >= minSelfY) &&
@@ -103,7 +103,7 @@
       *flag = YES;
     }
   } else {
-    foo = CGPointMake(0.0, 0.0);
+    foo = CGPointZero;
   }
 	
 	return foo;
