@@ -19,6 +19,6 @@
 @property (nonatomic) CGPoint d;
 
 - (BOOL)containsPoint:(CGPoint)point;
-- (CGPoint) intersectionWithPoint:(IDLine *)one flag:(BOOL *)flag;
+- (CGPoint)intersectionWithPoint:(IDLine *)one flag:(BOOL *)flag;
 
 @end
