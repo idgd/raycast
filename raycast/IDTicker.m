@@ -25,9 +25,6 @@
 - (void)tick:(CADisplayLink *)ticker {
 	[self.render calculateLines];
 	[self.delegate ticked:self];
-	
-	//self.render.player.ROT += 0.05;
-	//NSLog(@"%f,%f",self.render.player.POS.x,self.render.player.POS.y);
 }
 
 @end

@@ -14,6 +14,8 @@
 @property (nonatomic) CGPoint start;
 @property (nonatomic) CGPoint end;
 
+- (CGPoint)intersectionPoint:(IDLine *)otherLine intersects:(BOOL *)flag;
+
 @property (nonatomic) CGFloat M;
 @property (nonatomic) CGFloat B;
 

@@ -13,6 +13,7 @@
 #import "IDRectangle.h"
 #import "IDRay.h"
 #import "IDCamera.h"
+#import "IDLine.h"
 
 #import "IDView.h"
 
@@ -30,19 +31,43 @@
 		
 		CGFloat speed = 1.0/500.0;
 		
-		self.map.player.POS = CGPointMake(self.map.player.POS.x -
-																			cos(self.map.player.ROT) *
-																			self.translation.y * speed,
-																			self.map.player.POS.y -
-																			sin(self.map.player.ROT) *
-																			self.translation.y * speed);
-		
-		self.map.player.POS = CGPointMake(self.map.player.POS.x -
-																			sin(self.map.player.ROT) *
-																			self.translation.x * speed,
-																			self.map.player.POS.y +
-																			cos(self.map.player.ROT) *
-																			self.translation.x * speed);
+		for (IDRectangle *collRECT in self.map.blocks) {
+			
+			CGPoint gak = CGPointMake(self.map.player.POS.x -
+																cos(self.map.player.ROT) *
+																self.translation.y * speed,
+																self.map.player.POS.y -
+																sin(self.map.player.ROT) *
+																self.translation.y * speed);
+			
+			gak = CGPointMake(gak.x -
+												sin(self.map.player.ROT) *
+												self.translation.x * speed,
+												gak.y +
+												cos(self.map.player.ROT) *
+												self.translation.x * speed);
+			
+			if ([collRECT containsPoint:gak]) {
+				
+				IDLine *playerLine = [[IDLine alloc]init];
+				playerLine.start = self.map.player.POS;
+				playerLine.end = gak;
+				
+				BOOL beep = NO;
+				
+				CGPoint intersectionPoint = [collRECT intersectionWithPoint:playerLine
+																															 flag:&beep];
+				if (beep) {
+					self.map.player.POS = intersectionPoint;
+				}
+				
+			} else {
+				
+				self.map.player.POS = gak;
+				
+			}
+			
+		}
 		
 		//Forward vector:
 		//X = cos(theta), Y = sin(theta)

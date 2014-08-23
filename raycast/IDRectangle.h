@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
+@class IDLine;
+
 @interface IDRectangle : NSObject
 
 @property (nonatomic) CGPoint a;
@@ -17,5 +19,6 @@
 @property (nonatomic) CGPoint d;
 
 - (BOOL)containsPoint:(CGPoint)point;
+- (CGPoint) intersectionWithPoint:(IDLine *)one flag:(BOOL *)flag;
 
 @end

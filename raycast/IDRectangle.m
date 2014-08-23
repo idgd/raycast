@@ -9,6 +9,8 @@
 #import "IDRectangle.h"
 #import <UIKit/UIKit.h>
 
+#import "IDLine.h"
+
 @implementation IDRectangle
 
 - (BOOL)containsPoint:(CGPoint)point {
@@ -23,6 +25,46 @@
 	//NSLog(@"%@,%@",NSStringFromCGPoint(blorp.origin),NSStringFromCGSize(blorp.size));
 	
 	return CGRectContainsPoint(blorp, point);
+	
+}
+
+- (CGPoint) intersectionWithPoint:(IDLine *)one flag:(BOOL *)flag {
+	
+	IDLine *AB = [[IDLine alloc]init];
+	AB.start = self.a;
+	AB.end = self.b;
+	
+	IDLine *BC = [[IDLine alloc]init];
+	BC.start = self.b;
+	BC.end = self.c;
+	
+	IDLine *CD = [[IDLine alloc]init];
+	CD.start = self.c;
+	CD.end = self.d;
+	
+	IDLine *DA = [[IDLine alloc]init];
+	DA.start = self.d;
+	DA.end = self.a;
+	
+	NSArray *lines = @[AB,BC,CD,DA];
+	
+	CGPoint foo = CGPointMake(0, 0);
+	
+	for (IDLine *line in lines) {
+		
+		BOOL boop = NO;
+		foo = [line intersectionPoint:one intersects:&boop];
+		
+		if (boop) {
+			if (flag) {
+				*flag = boop;
+			}
+			break;
+		}
+		
+	}
+	
+	return foo;
 	
 }
 
