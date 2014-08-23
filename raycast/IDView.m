@@ -20,7 +20,7 @@
 								saturation:1.0
 								brightness:10.0/line.depth
 										 alpha:1.0] set];
-		line.renderLine.lineWidth = 10;
+		line.renderLine.lineWidth = 1;
 		
 		[line.renderLine stroke];
 		

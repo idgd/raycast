@@ -38,16 +38,47 @@
 - (void)ticked:(IDTicker *)ticker {
 	((IDView *)self.view).renderPaths = self.map.renderLines;
 	
-	if (self.location.x <= self.view.bounds.size.width / 2.0) {
+	CGPoint gak;
+	
+	if(self.location.x <= self.view.bounds.size.width / 2.0) {
+		/*CGAffineTransform newCoordinate = CGAffineTransformMakeTranslation(0,
+		 self.view.frame.size.height);
+		 newCoordinate = CGAffineTransformScale(newCoordinate, 1.0, -1.0);
+		 
+		 CGPoint newTranslation = CGPointMake(newCoordinate.a * self.translation.x +
+		 newCoordinate.c * self.translation.y +
+		 newCoordinate.tx,
+		 newCoordinate.b * self.translation.x +
+		 newCoordinate.d * self.translation.y +
+		 newCoordinate.ty);*/
+		
+		CGFloat bloop = M_PI / 2.0 - self.map.player.ROT + self.map.player.FOV / 2.0;
+		//		CGFloat SINN = sin(bloop);
+		//		CGFloat COSS = cos(bloop);
+		
+		CGAffineTransform sillyAffine = CGAffineTransformMakeRotation(bloop);
+		CGPoint florp = {0.0, self.translation.y};
+		gak = CGPointMake(sillyAffine.a * florp.x +
+											sillyAffine.c * florp.y,
+											sillyAffine.b * florp.x +
+											sillyAffine.d * florp.y);
+		
 		self.map.player.POS = CGPointMake(self.map.player.POS.x +
-																			sin(self.map.player.ROT) *
-																			-self.translation.x / 100.0,
-																			self.map.player.POS.y /*+
-																			sin(self.map.player.ROT) *
-																			-self.translation.y / 100.0*/);
+																			gak.x / 100.0,
+																			self.map.player.POS.y +
+																			gak.y / 100.0);
 	} else {
+		
 		self.map.player.ROT += -self.translation.x / 5000.0 * M_PI;
+		//NSLog(@"%f",self.map.player.ROT);
+		//NSLog(@"%f",(bloop / M_PI) * 180.0);
 	}
+	
+	NSLog(@"gak = %@ POS = %@ ROT = %f FOV = %f",
+				NSStringFromCGPoint(gak),
+				NSStringFromCGPoint(self.map.player.POS),
+				(self.map.player.ROT / M_PI) * 180.0,
+				(self.map.player.FOV / M_PI) * 180.0);
 	
 	self.translation = CGPointMake(0, 0);
 	
@@ -114,7 +145,7 @@
 	wall5.d = CGPointMake(0, 1);
 	
 	self.map.player = [[IDCamera alloc]init];
-	self.map.player.FOV = M_PI * 25;
+	self.map.player.FOV = M_PI / 2.0;
 	self.map.player.ROT = 0;
 	self.map.player.POS = CGPointMake(-5, -5);
 	self.map.player.bounds = self.view.frame.size;

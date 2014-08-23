@@ -19,10 +19,10 @@
 - (void)calculateLines {
 	self.renderLines = [NSMutableArray array];
 	
-	CGFloat distanceROTDelta = self.player.FOV / self.player.bounds.width / 10;
+	CGFloat distanceROTDelta = self.player.FOV / self.player.bounds.width;
 	CGFloat distanceROT = self.player.ROT;
 	
-	for (int width = 0; width < self.player.bounds.width / 10; width++) {
+	for (int width = 0; width < self.player.bounds.width; width++) {
 		CGFloat DIS;
 		
 		IDRay *distanceRay = [[IDRay alloc]init];
@@ -111,11 +111,11 @@
 				renderLine.renderLine.flatness = MAXFLOAT;
 				
 				[renderLine.renderLine moveToPoint:
-				 CGPointMake(width * 10, self.player.bounds.height/2 +
+				 CGPointMake(width, self.player.bounds.height/2 +
 										(self.player.bounds.height/2 * (5 / DIS)))];
 				
 				[renderLine.renderLine addLineToPoint:
-				 CGPointMake(width * 10, self.player.bounds.height/2 -
+				 CGPointMake(width, self.player.bounds.height/2 -
 										(self.player.bounds.height/2 * (5 / DIS)))];
 				
 				renderLine.depth = DIS;
