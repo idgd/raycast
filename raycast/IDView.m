@@ -16,10 +16,11 @@
 	
 	for (IDRenderLine *line in self.renderPaths) {
 		
-		[[UIColor colorWithHue:0.5
+		[[UIColor colorWithHue:0.2
 								saturation:1.0
 								brightness:10.0/line.depth
 										 alpha:1.0] set];
+		line.renderLine.lineWidth = 10;
 		
 		[line.renderLine stroke];
 		

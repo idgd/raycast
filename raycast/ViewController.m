@@ -37,16 +37,27 @@
 
 - (void)ticked:(IDTicker *)ticker {
 	((IDView *)self.view).renderPaths = self.map.renderLines;
+	
+	if (self.location.x <= self.view.bounds.size.width / 2.0) {
+		self.map.player.POS = CGPointMake(self.map.player.POS.x +
+																			-self.translation.x / 100.0,
+																			self.map.player.POS.y +
+																			-self.translation.y / 100.0);
+	} else {
+		self.map.player.ROT += -self.translation.x / 5000 * M_PI;
+	}
+	
+	self.translation = CGPointMake(0, 0);
+	
 	[self.view setNeedsDisplay];
 }
 
 - (void) movePlayer:(UIPanGestureRecognizer *)tapGR {
-	CGPoint location = [self.tapGR translationInView:self.view];
+	self.translation = [self.tapGR translationInView:self.view];
+	self.location = [self.tapGR locationInView:self.view];
 	
-	self.map.player.POS = CGPointMake(self.map.player.POS.x +
-																			location.x / 200,
-																			self.map.player.POS.y +
-																			location.y / 200);
+	//NSLog(@"TRAN:%f,%f",self.TRAN.x,self.TRAN.y);
+	//NSLog(@"LOCA:%f,%f",self.LOCA.x,self.LOCA.y);
 }
 
 - (void)viewDidLoad {
@@ -101,7 +112,7 @@
 	wall5.d = CGPointMake(0, 1);
 	
 	self.map.player = [[IDCamera alloc]init];
-	self.map.player.FOV = M_PI / 3;
+	self.map.player.FOV = M_PI * 25;
 	self.map.player.ROT = 0;
 	self.map.player.POS = CGPointMake(-5, -5);
 	self.map.player.bounds = self.view.frame.size;
