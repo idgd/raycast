@@ -68,4 +68,9 @@
 	
 }
 
+- (NSString *)description {
+  return [NSString stringWithFormat:@"{%@, %@, %@, %@}", NSStringFromCGPoint(self.a), NSStringFromCGPoint(self.b),
+          NSStringFromCGPoint(self.c), NSStringFromCGPoint(self.d)];
+}
+
 @end
