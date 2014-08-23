@@ -35,7 +35,9 @@
 }
 
 - (CGFloat)intercept {
-	return -(self.start.x * [self slope]);
+  // y = mx + b
+  // y - mx = b
+	return self.start.y - (self.start.x * [self slope]);
 }
 
 - (CGPoint)intersectionPoint:(IDLine *)otherLine intersects:(BOOL *)flag {
@@ -43,7 +45,7 @@
 	CGFloat thisSlope = [self slope];
 	CGFloat otherSlope = [otherLine slope];
 	CGFloat thisIntercept = [self intercept];
-	CGFloat otherIntercept = [self intercept];
+	CGFloat otherIntercept = [otherLine intercept];
 	
 	CGFloat interceptX;
 	CGFloat interceptY;
@@ -77,7 +79,7 @@
 	} else {
 		
 		interceptX = (otherIntercept - thisIntercept) / (thisSlope - otherSlope);
-		interceptY = thisSlope * ((otherIntercept - thisIntercept) / (thisSlope - otherSlope) + otherIntercept);
+		interceptY = thisSlope * interceptX + thisIntercept;
 		
 	}
 	
@@ -87,19 +89,16 @@
 	CGFloat minY = MIN(self.start.y, self.end.y);
 	CGFloat maxX = MAX(self.start.x, self.end.x);
 	CGFloat maxY = MAX(self.start.y, self.end.y);
+
+  if ((interceptX <= maxX && interceptX >= minX) && (interceptY <= maxY && interceptY >= minY)) {
+    if(flag) {
+      *flag = YES;
+    }
+  } else {
+    foo = CGPointMake(0.0, 0.0);
+  }
 	
-	CGRect boundingBox = CGRectMake(minX, minY, maxX - minX, maxY - minY);
-	
-	BOOL lag = CGRectContainsPoint(boundingBox, foo);
-	
-	if (!lag) {
-		foo = CGPointMake(0, 0);
-	}
-	if (flag) {
-		*flag = lag;
-	}
 	return foo;
-	
 }
 
 @end
