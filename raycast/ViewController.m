@@ -38,46 +38,31 @@
 - (void)ticked:(IDTicker *)ticker {
 	((IDView *)self.view).renderPaths = self.map.renderLines;
 	
-	CGPoint gak;
-	
-	if(self.location.x <= self.view.bounds.size.width / 2.0) {
-		CGFloat bloop = M_PI / 2.0 - (self.map.player.ROT + self.map.player.FOV / 2.0);
-
-		CGAffineTransform sillyAffine = CGAffineTransformMakeRotation(bloop);
-		CGPoint florp = {0.0, self.translation.y};
-		gak = CGPointMake(sillyAffine.a * florp.x +
-											sillyAffine.c * florp.y,
-											sillyAffine.b * florp.x +
-											sillyAffine.d * florp.y);
-		
-		self.map.player.POS = CGPointMake(self.map.player.POS.x +
-																			gak.x / 100.0,
-																			self.map.player.POS.y +
-																			gak.y / 100.0);
-	} else {
-		
-		self.map.player.ROT += -self.translation.x / 5000.0 * M_PI;
-		//NSLog(@"%f",self.map.player.ROT);
-		//NSLog(@"%f",(bloop / M_PI) * 180.0);
-	}
-	
-	NSLog(@"gak = %@ POS = %@ ROT = %f FOV = %f",
-				NSStringFromCGPoint(gak),
-				NSStringFromCGPoint(self.map.player.POS),
-				(self.map.player.ROT / M_PI) * 180.0,
-				(self.map.player.FOV / M_PI) * 180.0);
-	
-	self.translation = CGPointMake(0, 0);
+  if(self.location.x <= self.view.bounds.size.width / 2.0) {
+    CGFloat speed = 1.0/500.0;
+    self.map.player.POS = CGPointMake(self.map.player.POS.x - cos(self.map.player.ROT)*self.translation.y*speed, self.map.player.POS.y - sin(self.map.player.ROT)*self.translation.y*speed);
+    self.map.player.POS = CGPointMake(self.map.player.POS.x - sin(self.map.player.ROT)*self.translation.x*speed, self.map.player.POS.y + cos(self.map.player.ROT)*self.translation.x*speed);
+    //Forward vector:
+    //X = cos(theta), Y = sin(theta)
+    //Right vector:
+    //X = sin(theta), Y = -cos(theta)
+    //Both are negated in the actual translation because positive y pan is down, and positive x pan is left when it needs to be up and right.
+  }else{
+      self.map.player.ROT += self.translation.x / 5000.0 * M_PI;
+  }
 	
 	[self.view setNeedsDisplay];
 }
 
 - (void) movePlayer:(UIPanGestureRecognizer *)tapGR {
+  if(tapGR.state == UIGestureRecognizerStateBegan){
+    self.location = [self.tapGR locationInView:self.view];
+  }else if(tapGR.state == UIGestureRecognizerStateChanged){
 	self.translation = [self.tapGR translationInView:self.view];
-	self.location = [self.tapGR locationInView:self.view];
-	
-	//NSLog(@"TRAN:%f,%f",self.TRAN.x,self.TRAN.y);
-	//NSLog(@"LOCA:%f,%f",self.LOCA.x,self.LOCA.y);
+  }else if(tapGR.state == UIGestureRecognizerStateEnded){
+    self.translation = CGPointZero;
+    self.location = CGPointZero;
+  }
 }
 
 - (void)viewDidLoad {
@@ -132,7 +117,7 @@
 	wall5.d = CGPointMake(0, 1);
 	
 	self.map.player = [[IDCamera alloc]init];
-	self.map.player.FOV = M_PI / 2.0;
+	self.map.player.FOV = M_PI / 4.0;
 	self.map.player.ROT = 0;
 	self.map.player.POS = CGPointMake(-5, -5);
 	self.map.player.bounds = self.view.frame.size;
