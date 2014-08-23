@@ -113,6 +113,40 @@
   XCTAssertEqualWithAccuracy(intercetionPoint.y, 0.0, 0.000001, @"Y should be 0.0");
 }
 
+- (void)testNotIntersectParrallel {
+  IDLine *one = [[IDLine alloc] init];
+  one.start = CGPointMake(0.0, 0.0);
+  one.end = CGPointMake(4.0, 1.0);
+  
+  IDLine *two = [[IDLine alloc] init];
+  two.start = CGPointMake(-4.0, -2.0);
+  two.end = CGPointMake(0.0, -1.0);
+  
+  // intersection should be 2.0, 0.0
+  BOOL intersects = NO;
+  CGPoint intercetionPoint = [one intersectionPoint:two intersects:&intersects];
+  XCTAssert(!intersects, @"%@ Should Not Intersect %@", one, two);
+  XCTAssertEqualWithAccuracy(intercetionPoint.x, 0.0, 0.000001, @"X should be 0.0");
+  XCTAssertEqualWithAccuracy(intercetionPoint.y, 0.0, 0.000001, @"Y should be 0.0");
+}
+
+- (void)testNotIntersectOneAcuteTwoAcute {
+  IDLine *one = [[IDLine alloc] init];
+  one.start = CGPointMake(0.0, 0.0);
+  one.end = CGPointMake(4.0, 1.0);
+  
+  IDLine *two = [[IDLine alloc] init];
+  two.start = CGPointMake(-4.0, -2.0);
+  two.end = CGPointMake(0.0, -0.5);
+  
+  // intersection should be 2.0, 0.0
+  BOOL intersects = NO;
+  CGPoint intercetionPoint = [one intersectionPoint:two intersects:&intersects];
+  XCTAssert(!intersects, @"%@ Should Not Intersect %@", one, two);
+  XCTAssertEqualWithAccuracy(intercetionPoint.x, 0.0, 0.000001, @"X should be 0.0");
+  XCTAssertEqualWithAccuracy(intercetionPoint.y, 0.0, 0.000001, @"Y should be 0.0");
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

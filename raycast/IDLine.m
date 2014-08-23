@@ -85,12 +85,20 @@
 	
 	CGPoint foo = CGPointMake(interceptX, interceptY);
 	
-	CGFloat minX = MIN(self.start.x, self.end.x);
-	CGFloat minY = MIN(self.start.y, self.end.y);
-	CGFloat maxX = MAX(self.start.x, self.end.x);
-	CGFloat maxY = MAX(self.start.y, self.end.y);
+  CGFloat minSelfX = MIN(self.start.x, self.end.x);
+  CGFloat minSelfY = MIN(self.start.y, self.end.y);
+  CGFloat maxSelfX = MAX(self.start.x, self.end.x);
+  CGFloat maxSelfY = MAX(self.start.y, self.end.y);
 
-  if ((interceptX <= maxX && interceptX >= minX) && (interceptY <= maxY && interceptY >= minY)) {
+  CGFloat minOtherX = MIN(otherLine.start.x, otherLine.end.x);
+  CGFloat minOtherY = MIN(otherLine.start.y, otherLine.end.y);
+  CGFloat maxOtherX = MAX(otherLine.start.x, otherLine.end.x);
+  CGFloat maxOtherY = MAX(otherLine.start.y, otherLine.end.y);
+
+  if ((interceptX <= maxSelfX && interceptX >= minSelfX) &&
+      (interceptY <= maxSelfY && interceptY >= minSelfY) &&
+      (interceptX <= maxOtherX && interceptX >= minOtherX) &&
+      (interceptY <= maxOtherY && interceptY >= minOtherY)) {
     if(flag) {
       *flag = YES;
     }
