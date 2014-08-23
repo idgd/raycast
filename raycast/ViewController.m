@@ -41,21 +41,8 @@
 	CGPoint gak;
 	
 	if(self.location.x <= self.view.bounds.size.width / 2.0) {
-		/*CGAffineTransform newCoordinate = CGAffineTransformMakeTranslation(0,
-		 self.view.frame.size.height);
-		 newCoordinate = CGAffineTransformScale(newCoordinate, 1.0, -1.0);
-		 
-		 CGPoint newTranslation = CGPointMake(newCoordinate.a * self.translation.x +
-		 newCoordinate.c * self.translation.y +
-		 newCoordinate.tx,
-		 newCoordinate.b * self.translation.x +
-		 newCoordinate.d * self.translation.y +
-		 newCoordinate.ty);*/
-		
-		CGFloat bloop = M_PI / 2.0 - self.map.player.ROT + self.map.player.FOV / 2.0;
-		//		CGFloat SINN = sin(bloop);
-		//		CGFloat COSS = cos(bloop);
-		
+		CGFloat bloop = M_PI / 2.0 - (self.map.player.ROT + self.map.player.FOV / 2.0);
+
 		CGAffineTransform sillyAffine = CGAffineTransformMakeRotation(bloop);
 		CGPoint florp = {0.0, self.translation.y};
 		gak = CGPointMake(sillyAffine.a * florp.x +
