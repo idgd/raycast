@@ -112,11 +112,11 @@
 				
 				[renderLine.renderLine moveToPoint:
 				 CGPointMake(width * 10, self.player.bounds.height/2 +
-										 (self.player.bounds.height/2 * (5 / DIS)))];
+										(self.player.bounds.height/2 * (5 / DIS)))];
 				
 				[renderLine.renderLine addLineToPoint:
 				 CGPointMake(width * 10, self.player.bounds.height/2 -
-										 (self.player.bounds.height/2 * (5 / DIS)))];
+										(self.player.bounds.height/2 * (5 / DIS)))];
 				
 				renderLine.depth = DIS;
 				

@@ -40,11 +40,13 @@
 	
 	if (self.location.x <= self.view.bounds.size.width / 2.0) {
 		self.map.player.POS = CGPointMake(self.map.player.POS.x +
+																			sin(self.map.player.ROT) *
 																			-self.translation.x / 100.0,
-																			self.map.player.POS.y +
-																			-self.translation.y / 100.0);
+																			self.map.player.POS.y /*+
+																			sin(self.map.player.ROT) *
+																			-self.translation.y / 100.0*/);
 	} else {
-		self.map.player.ROT += -self.translation.x / 5000 * M_PI;
+		self.map.player.ROT += -self.translation.x / 5000.0 * M_PI;
 	}
 	
 	self.translation = CGPointMake(0, 0);
