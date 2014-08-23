@@ -16,4 +16,6 @@
 @property (nonatomic) CGPoint c;
 @property (nonatomic) CGPoint d;
 
+- (BOOL)containsPoint:(CGPoint)point;
+
 @end

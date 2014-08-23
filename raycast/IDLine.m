@@ -7,7 +7,11 @@
 //
 
 #import "IDLine.h"
-
+#import <UIKit/UIKit.h>
 @implementation IDLine
 
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"start = %@ end = %@", NSStringFromCGPoint(self.start), NSStringFromCGPoint(self.end)];
+}
 @end

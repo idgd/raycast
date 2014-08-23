@@ -26,35 +26,35 @@
 	
 	((IDView *)self.view).renderPaths = self.map.renderLines;
 	
-  if(self.location.x <= self.view.bounds.size.width / 2.0) {
+	if(self.location.x <= self.view.bounds.size.width / 2.0) {
 		
-    CGFloat speed = 1.0/500.0;
+		CGFloat speed = 1.0/500.0;
 		
-    self.map.player.POS = CGPointMake(self.map.player.POS.x -
+		self.map.player.POS = CGPointMake(self.map.player.POS.x -
 																			cos(self.map.player.ROT) *
-																			self.translation.y*speed,
+																			self.translation.y * speed,
 																			self.map.player.POS.y -
 																			sin(self.map.player.ROT) *
-																			self.translation.y*speed);
+																			self.translation.y * speed);
 		
-    self.map.player.POS = CGPointMake(self.map.player.POS.x -
+		self.map.player.POS = CGPointMake(self.map.player.POS.x -
 																			sin(self.map.player.ROT) *
-																			self.translation.x*speed,
+																			self.translation.x * speed,
 																			self.map.player.POS.y +
 																			cos(self.map.player.ROT) *
-																			self.translation.x*speed);
+																			self.translation.x * speed);
 		
-    //Forward vector:
-    //X = cos(theta), Y = sin(theta)
-    //Right vector:
-    //X = sin(theta), Y = -cos(theta)
-    //Both are negated in the actual translation because positive y pan is down, and positive x pan is left when it needs to be up and right.
+		//Forward vector:
+		//X = cos(theta), Y = sin(theta)
+		//Right vector:
+		//X = sin(theta), Y = -cos(theta)
+		//Both are negated in the actual translation because positive y pan is down, and positive x pan is left when it needs to be up and right.
 		
-  } else {
+	} else {
 		
-      self.map.player.ROT += self.translation.x / 5000.0 * M_PI;
+		self.map.player.ROT += self.translation.x / 5000.0 * M_PI;
 		
-  }
+	}
 	
 	[self.view setNeedsDisplay];
 	
@@ -62,20 +62,20 @@
 
 - (void) movePlayer:(UIPanGestureRecognizer *)tapGR {
 	
-  if(tapGR.state == UIGestureRecognizerStateBegan) {
+	if(tapGR.state == UIGestureRecognizerStateBegan) {
 		
-    self.location = [self.tapGR locationInView:self.view];
+		self.location = [self.tapGR locationInView:self.view];
 		
-  } else if(tapGR.state == UIGestureRecognizerStateChanged) {
+	} else if(tapGR.state == UIGestureRecognizerStateChanged) {
 		
-	self.translation = [self.tapGR translationInView:self.view];
+		self.translation = [self.tapGR translationInView:self.view];
 		
-  } else if(tapGR.state == UIGestureRecognizerStateEnded) {
+	} else if(tapGR.state == UIGestureRecognizerStateEnded) {
 		
-    self.translation = CGPointZero;
-    self.location = CGPointZero;
+		self.translation = CGPointZero;
+		self.location = CGPointZero;
 		
-  }
+	}
 	
 }
 
@@ -127,9 +127,9 @@
 	IDRectangle *wall5 = [[IDRectangle alloc]init];
 	
 	wall5.a = CGPointMake(0, 0);
-	wall5.b = CGPointMake(1, 0);
-	wall5.c = CGPointMake(1, 1);
-	wall5.d = CGPointMake(0, 1);
+	wall5.b = CGPointMake(2, 0);
+	wall5.c = CGPointMake(2, 2);
+	wall5.d = CGPointMake(0, 2);
 	
 	self.map.player = [[IDCamera alloc]init];
 	self.map.player.FOV = M_PI / 2.0;
@@ -137,7 +137,7 @@
 	self.map.player.POS = CGPointMake(-5, -5);
 	self.map.player.bounds = self.view.frame.size;
 	
-	self.map.blocks = @[wall0, wall1, wall2, wall3, wall5];
+	self.map.blocks = @[wall0,wall1,wall2,wall3,wall4,wall5];
 	
 	self.tick = [[IDTicker alloc]init];
 	

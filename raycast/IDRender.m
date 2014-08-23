@@ -17,6 +17,7 @@
 @implementation IDRender
 
 - (void)calculateLines {
+	
 	self.renderLines = [NSMutableArray array];
 	
 	CGFloat distanceROTDelta = self.player.FOV / self.player.bounds.width;
@@ -112,11 +113,11 @@
 				
 				[renderLine.renderLine moveToPoint:
 				 CGPointMake(width, self.player.bounds.height/2 +
-										(self.player.bounds.height/2 * (5 / DIS)))];
+										 (self.player.bounds.height/2 * (5 / DIS)))];
 				
 				[renderLine.renderLine addLineToPoint:
 				 CGPointMake(width, self.player.bounds.height/2 -
-										(self.player.bounds.height/2 * (5 / DIS)))];
+										 (self.player.bounds.height/2 * (5 / DIS)))];
 				
 				renderLine.depth = DIS;
 				
@@ -127,6 +128,15 @@
 		distanceROT += distanceROTDelta;
 		
 	}
+	
+	for (IDRectangle *collRECT in self.blocks) {
+		
+		if ([collRECT containsPoint:self.player.POS]) {
+			self.player.POS = CGPointMake(0, 0);
+		}
+		
+	}
+	
 }
 
 @end
