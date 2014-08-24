@@ -32,7 +32,12 @@
     for(NSInteger i = 0;i < 16;i++) {
       CGRect imageSlice = CGRectMake(i * 16, 0.0, 16.0, 256.0);
       CGImageRef slice = CGImageCreateWithImageInRect(self.wallTile.CGImage, imageSlice);
-      [slices addObject:[UIImage imageWithCGImage:slice]];
+      CGSize size = CGSizeMake(1.0, 256.0);
+      UIGraphicsBeginImageContext(size);
+      CGContextRef ctx = UIGraphicsGetCurrentContext();
+      CGContextDrawImage(ctx, CGRectMake(0.0, 0.0, 1.0, 256.0), slice);
+      [slices addObject:UIGraphicsGetImageFromCurrentImageContext()];
+      UIGraphicsEndImageContext();
     }
     self.slices = [slices copy];
     
