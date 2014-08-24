@@ -8,6 +8,8 @@
 
 #import "IDLine.h"
 #import <UIKit/UIKit.h>
+#import "IDRay.h"
+
 @implementation IDLine
 
 - (NSString *)description
@@ -40,7 +42,76 @@
 	return self.start.y - (self.start.x * [self slope]);
 }
 
-- (CGPoint)intersectionPoint:(IDLine *)otherLine intersects:(BOOL *)flag {
+- (CGPoint)intersectionPointWithRay:(IDRay *)ray intersects:(BOOL *)flag {
+  CGFloat thisSlope = [self slope];
+  CGFloat raySlope = [ray slope];
+  CGFloat thisIntercept = [self intercept];
+  CGFloat rayIntercept = [ray intercept];
+  
+  // don't intercept if parallel, even if on top of each other
+  // that would make for a bogus drawing
+  if(raySlope == thisSlope) {
+    if(flag) {
+      *flag = NO;
+    }
+    return CGPointZero;
+  }
+  
+  CGFloat interceptX;
+  CGFloat interceptY;
+  
+  if (thisSlope >= MAXFLOAT - 1.0 ||
+      thisSlope <= -MAXFLOAT + 1.0) {
+    
+    interceptX = self.start.x;
+    interceptY = raySlope * self.start.x + rayIntercept;
+    
+  } else if (raySlope >= MAXFLOAT - 1.0 ||
+             raySlope <= -MAXFLOAT + 1.0) {
+    
+    interceptX = ray.origin.x;
+    interceptY = thisSlope * ray.origin.x + thisIntercept;
+    
+  } else {
+    
+    interceptX = (rayIntercept - thisIntercept) / (thisSlope - raySlope);
+    interceptY = (thisSlope * rayIntercept - raySlope * thisIntercept) / (thisSlope - raySlope);
+    
+  }
+  
+  
+  // check if the intersection point is on the line segment
+  if(interceptX > MAX(self.start.x, self.end.x) + 0.01 ||
+     interceptX < MIN(self.start.x, self.end.x) - 0.01 ||
+     interceptY > MAX(self.start.y, self.end.y) + 0.01 ||
+     interceptY < MIN(self.start.y, self.end.y) - 0.01) {
+    if(flag) {
+      *flag = NO;
+    }
+    return CGPointZero;
+  }
+  
+  // check if the intersection point is on the ray
+  CGFloat dot = ray.direction.x * (interceptX - ray.origin.x) +
+                ray.direction.y * (interceptY - ray.origin.y);
+  
+  if(dot <= 0.0){
+    if(flag) {
+      *flag = NO;
+    }
+    return CGPointZero;
+  }
+  
+  CGPoint foo = CGPointMake(interceptX, interceptY);
+  
+  if(flag) {
+    *flag = YES;
+  }
+  
+  return foo;
+}
+
+- (CGPoint)intersectionPointWithLine:(IDLine *)otherLine intersects:(BOOL *)flag {
   
 	CGFloat thisSlope = [self slope];
 	CGFloat otherSlope = [otherLine slope];
@@ -61,14 +132,14 @@
 	// x = (b2 - b1) / (m1 - m2)
 	// y = m1 ((b2 - b1) / (m1 - m2)) + b2
 	
-	if (otherSlope >= MAXFLOAT - 1 ||
-			otherSlope <= -MAXFLOAT + 1) {
+	if (otherSlope >= MAXFLOAT - 1.0 ||
+			otherSlope <= -MAXFLOAT + 1.0) {
 		
 		interceptX = otherLine.start.x;
 		interceptY = thisSlope * otherLine.start.x + thisIntercept;
 		
-	} else if (thisSlope >= MAXFLOAT - 1 ||
-						 thisSlope <= -MAXFLOAT + 1) {
+	} else if (thisSlope >= MAXFLOAT - 1.0 ||
+						 thisSlope <= -MAXFLOAT + 1.0) {
 		
 		interceptX = self.start.x;
 		

@@ -11,10 +11,9 @@
 
 @interface IDRay : NSObject
 
-@property (nonatomic) CGPoint XY;
-@property (nonatomic) CGFloat M;
-@property (nonatomic) CGFloat B;
-
-- (void)getDistance;
+@property (nonatomic) CGPoint origin;
+@property (nonatomic) CGPoint direction;
+@property (nonatomic, readonly) CGFloat intercept;
+@property (nonatomic, readonly) CGFloat slope;
 
 @end

@@ -7,10 +7,22 @@
 //
 
 #import "IDRay.h"
+#import <UIKit/UIKit.h>
 
 @implementation IDRay
 
-- (void)getDistance {
+- (CGFloat)intercept {
+  // y = mx + b
+  // y - mx = b
+  return self.origin.y - (self.origin.x * self.direction.y / self.direction.x);
+}
+
+- (CGFloat)slope {
+  return self.direction.y / self.direction.x;
+}
+
+- (NSString *)description {
+  return [NSString stringWithFormat:@"start = %@ slope = %@", NSStringFromCGPoint(self.origin), NSStringFromCGPoint(self.direction)];
 }
 
 @end

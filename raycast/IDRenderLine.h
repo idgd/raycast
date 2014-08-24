@@ -12,5 +12,6 @@
 
 @property(nonatomic) UIBezierPath *renderLine;
 @property(nonatomic) CGFloat depth;
+@property(nonatomic, strong) UIColor *color;
 
 @end

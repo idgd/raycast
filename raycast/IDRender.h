@@ -23,6 +23,7 @@
 @property (nonatomic,copy) NSArray *blocks;
 @property (nonatomic,copy) NSArray *enemyBlocks;
 
+- (void)gak;
 - (void)calculateLines;
 
 @end

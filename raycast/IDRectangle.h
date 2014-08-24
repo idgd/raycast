@@ -10,6 +10,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @class IDLine;
+@class IDRay;
 
 @interface IDRectangle : NSObject
 
@@ -20,5 +21,7 @@
 
 - (BOOL)containsPoint:(CGPoint)point;
 - (CGPoint)intersectionWithPoint:(IDLine *)one flag:(BOOL *)flag;
+
+- (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag;
 
 @end

@@ -158,7 +158,7 @@
 	self.map.player.POS = CGPointMake(3.0, 3.0);
 	self.map.player.bounds = self.view.frame.size;
 	
-	self.map.blocks = @[wall0,wall1,wall2,wall3];
+  self.map.blocks = @[/*wall0,wall1,wall2,wall3,wall4,*/wall5];
 	self.map.enemyBlocks = @[enemy0];
 	
 	self.tick = [[IDTicker alloc]init];
