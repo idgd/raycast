@@ -153,7 +153,7 @@
 	enemy0.enemyOrigin = CGPointMake(4.0,4.0);
 	
 	self.map.player = [[IDCamera alloc]init];
-	self.map.player.FOV = M_PI / 2.0;
+	self.map.player.FOV = M_PI / 3.0;
 	self.map.player.ROT = M_PI / 3.0;
 	self.map.player.POS = CGPointMake(3.0, 3.0);
 	self.map.player.bounds = self.view.frame.size;
