@@ -11,12 +11,16 @@
 		7B14569019A937DA002AF42E /* IDGraphicsUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B14568C19A93614002AF42E /* IDGraphicsUtilities.c */; };
 		7B14569219A93853002AF42E /* IDLineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14569119A93853002AF42E /* IDLineTests.m */; };
 		7B14569419A93F01002AF42E /* IDRectangleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14569319A93F01002AF42E /* IDRectangleTests.m */; };
+		9C409D7A19A9622400307C2D /* IDEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C409D7919A9622400307C2D /* IDEnemy.m */; };
 		9C41C90A19903BE00059FD19 /* IDRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C41C90919903BE00059FD19 /* IDRectangle.m */; };
 		9C775ACB19903E4E001E7C7B /* IDRay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775ACA19903E4E001E7C7B /* IDRay.m */; };
 		9C775ACE19903EFB001E7C7B /* IDCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775ACD19903EFB001E7C7B /* IDCamera.m */; };
 		9C775AD119903F8F001E7C7B /* IDRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD019903F8F001E7C7B /* IDRender.m */; };
 		9C775AD6199067A8001E7C7B /* IDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD5199067A8001E7C7B /* IDView.m */; };
 		9C775AD919906FB5001E7C7B /* IDLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C775AD819906FB5001E7C7B /* IDLine.m */; };
+		9CBBEBB019AA3E5C00C324A0 /* ceiling.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBEBAD19AA3E5C00C324A0 /* ceiling.png */; };
+		9CBBEBB119AA3E5C00C324A0 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBEBAE19AA3E5C00C324A0 /* enemy.png */; };
+		9CBBEBB219AA3E5C00C324A0 /* floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBEBAF19AA3E5C00C324A0 /* floor.png */; };
 		9CD0DB7C19A4782B00BBD49B /* IDRenderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD0DB7B19A4782B00BBD49B /* IDRenderLine.m */; };
 		9CF1797C19903323009BDD8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1797B19903323009BDD8D /* main.m */; };
 		9CF1797F19903323009BDD8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1797E19903323009BDD8D /* AppDelegate.m */; };
@@ -42,6 +46,8 @@
 		7B14568D19A93614002AF42E /* IDGraphicsUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDGraphicsUtilities.h; sourceTree = "<group>"; };
 		7B14569119A93853002AF42E /* IDLineTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLineTests.m; sourceTree = "<group>"; };
 		7B14569319A93F01002AF42E /* IDRectangleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRectangleTests.m; sourceTree = "<group>"; };
+		9C409D7819A9622400307C2D /* IDEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEnemy.h; sourceTree = "<group>"; };
+		9C409D7919A9622400307C2D /* IDEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDEnemy.m; sourceTree = "<group>"; };
 		9C41C90819903BE00059FD19 /* IDRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRectangle.h; sourceTree = "<group>"; };
 		9C41C90919903BE00059FD19 /* IDRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRectangle.m; sourceTree = "<group>"; };
 		9C775AC919903E4E001E7C7B /* IDRay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRay.h; sourceTree = "<group>"; };
@@ -54,6 +60,9 @@
 		9C775AD5199067A8001E7C7B /* IDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDView.m; sourceTree = "<group>"; };
 		9C775AD719906FB5001E7C7B /* IDLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLine.h; sourceTree = "<group>"; };
 		9C775AD819906FB5001E7C7B /* IDLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLine.m; sourceTree = "<group>"; };
+		9CBBEBAD19AA3E5C00C324A0 /* ceiling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ceiling.png; sourceTree = "<group>"; };
+		9CBBEBAE19AA3E5C00C324A0 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		9CBBEBAF19AA3E5C00C324A0 /* floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floor.png; sourceTree = "<group>"; };
 		9CD0DB7A19A4782B00BBD49B /* IDRenderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRenderLine.h; sourceTree = "<group>"; };
 		9CD0DB7B19A4782B00BBD49B /* IDRenderLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRenderLine.m; sourceTree = "<group>"; };
 		9CF1797619903323009BDD8D /* raycast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = raycast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +102,8 @@
 		9C775AC819903E02001E7C7B /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				9C409D7819A9622400307C2D /* IDEnemy.h */,
+				9C409D7919A9622400307C2D /* IDEnemy.m */,
 				9CD0DB7A19A4782B00BBD49B /* IDRenderLine.h */,
 				9CD0DB7B19A4782B00BBD49B /* IDRenderLine.m */,
 				9C41C90819903BE00059FD19 /* IDRectangle.h */,
@@ -105,6 +116,16 @@
 				9C775AD819906FB5001E7C7B /* IDLine.m */,
 			);
 			name = DataTypes;
+			sourceTree = "<group>";
+		};
+		9CBBEBAC19AA3E5C00C324A0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBEBAD19AA3E5C00C324A0 /* ceiling.png */,
+				9CBBEBAE19AA3E5C00C324A0 /* enemy.png */,
+				9CBBEBAF19AA3E5C00C324A0 /* floor.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		9CF1796D19903323009BDD8D = {
@@ -142,6 +163,7 @@
 				9C775AD4199067A8001E7C7B /* IDView.h */,
 				9C775AD5199067A8001E7C7B /* IDView.m */,
 				9CF1798319903323009BDD8D /* Main.storyboard */,
+				9CBBEBAC19AA3E5C00C324A0 /* images */,
 				9CF1798619903323009BDD8D /* Images.xcassets */,
 				9CF1797919903323009BDD8D /* Supporting Files */,
 			);
@@ -257,6 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF1798519903323009BDD8D /* Main.storyboard in Resources */,
+				9CBBEBB019AA3E5C00C324A0 /* ceiling.png in Resources */,
+				9CBBEBB119AA3E5C00C324A0 /* enemy.png in Resources */,
+				9CBBEBB219AA3E5C00C324A0 /* floor.png in Resources */,
 				9CF1798719903323009BDD8D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF1799E199037DC009BDD8D /* IDTicker.m in Sources */,
+				9C409D7A19A9622400307C2D /* IDEnemy.m in Sources */,
 				9CF1798219903323009BDD8D /* ViewController.m in Sources */,
 				9C775AD6199067A8001E7C7B /* IDView.m in Sources */,
 				9C775AD119903F8F001E7C7B /* IDRender.m in Sources */,

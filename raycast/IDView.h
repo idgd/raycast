@@ -13,5 +13,6 @@
 @interface IDView : UIView
 
 @property (nonatomic,copy) NSArray *renderPaths;
+@property (nonatomic,copy) NSArray *enemyPaths;
 
 @end

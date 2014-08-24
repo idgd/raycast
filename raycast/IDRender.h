@@ -13,12 +13,15 @@
 @class IDRay;
 @class IDCamera;
 @class IDLine;
+@class IDEnemy;
 
 @interface IDRender : NSObject
 
 @property (nonatomic,strong) IDCamera *player;
 @property (nonatomic,strong) NSMutableArray *renderLines;
+@property (nonatomic,strong) NSMutableArray *enemies;
 @property (nonatomic,copy) NSArray *blocks;
+@property (nonatomic,copy) NSArray *enemyBlocks;
 
 - (void)calculateLines;
 

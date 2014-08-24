@@ -9,6 +9,7 @@
 #import "IDView.h"
 
 #import "IDRenderLine.h"
+#import "IDEnemy.h"
 
 @implementation IDView
 
@@ -23,6 +24,18 @@
 		line.renderLine.lineWidth = 1;
 		
 		[line.renderLine stroke];
+		
+	}
+	
+	for (IDEnemy *enemy in self.enemyPaths) {
+		
+		[[UIColor colorWithHue:0.0
+								saturation:1.0
+								brightness:1.0
+										 alpha:1.0] set];
+		enemy.enemyPath.lineWidth = enemy.enemyWidth;
+		
+		[enemy.enemyPath stroke];
 		
 	}
 	

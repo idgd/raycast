@@ -14,6 +14,7 @@
 #import "IDRay.h"
 #import "IDCamera.h"
 #import "IDLine.h"
+#import "IDEnemy.h"
 
 #import "IDView.h"
 
@@ -26,6 +27,7 @@
 - (void)ticked:(IDTicker *)ticker {
 	
 	((IDView *)self.view).renderPaths = self.map.renderLines;
+	((IDView *)self.view).enemyPaths = self.map.enemies;
 	
 	if(self.location.x <= self.view.bounds.size.width / 2.0) {
 		
@@ -147,13 +149,17 @@
 	wall5.c = CGPointMake(2, 2);
 	wall5.d = CGPointMake(0, 2);
 	
+	IDEnemy *enemy0 = [[IDEnemy alloc]init];
+	enemy0.enemyOrigin = CGPointMake(4.0,4.0);
+	
 	self.map.player = [[IDCamera alloc]init];
 	self.map.player.FOV = M_PI / 2.0;
-	self.map.player.ROT = 0;
-	self.map.player.POS = CGPointMake(-5, -5);
+	self.map.player.ROT = M_PI / 3.0;
+	self.map.player.POS = CGPointMake(3.0, 3.0);
 	self.map.player.bounds = self.view.frame.size;
 	
-	self.map.blocks = @[wall0,wall1,wall2,wall3,wall4,wall5];
+	self.map.blocks = @[wall0,wall1,wall2,wall3];
+	self.map.enemyBlocks = @[enemy0];
 	
 	self.tick = [[IDTicker alloc]init];
 	
