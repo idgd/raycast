@@ -50,34 +50,33 @@
 - (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag {
   
   NSArray *lines = [self lines];
+  BOOL *linesIntersect = calloc(lines.count, sizeof(BOOL));
   CGPoint *intersections = calloc(lines.count, sizeof(CGPoint));
-  // init the intersections
-  for(NSUInteger i = 0;i < lines.count;i++) {
-    intersections[i].x = -MAXFLOAT;
-    intersections[i].y = -MAXFLOAT;
-  }
   
   for(NSUInteger i = 0;i < lines.count;i++) {
     IDLine *line = lines[i];
-    BOOL intercepts = NO;
-    intersections[i] = [line intersectionPointWithRay:ray intersects:&intercepts];
-    if(intercepts) {
-      if(flag) {
-        *flag = YES;
-      }
-    }
+    intersections[i] = [line intersectionPointWithRay:ray intersects:&linesIntersect[i]];
   }
   
   CGPoint intersection;
-  CGFloat minLength = -MAXFLOAT;
+  CGFloat distance = MAXFLOAT;
   for(NSUInteger i = 0;i < lines.count;i++) {
+    if(linesIntersect[i]){
+      *flag = YES;
+    }else{
+      continue;
+    }
     CGPoint delta = CGPointToPointDelta(intersections[i], ray.origin);
     CGFloat length = CGPointLength(delta);
-    if(length > minLength) {
-      minLength = length;
+    if(length < distance) {
+      distance = length;
       intersection = intersections[i];
     }
   }
+  
+  free(linesIntersect);
+  free(intersections);
+  
   return intersection;
 }
 
