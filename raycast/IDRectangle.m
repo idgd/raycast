@@ -8,8 +8,9 @@
 
 #import "IDRectangle.h"
 #import <UIKit/UIKit.h>
-
+#import "IDGraphicsUtilities.h"
 #import "IDLine.h"
+#import "IDRay.h"
 
 @implementation IDRectangle
 
@@ -49,16 +50,32 @@
 - (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag {
   
   NSArray *lines = [self lines];
-  CGPoint intersection = CGPointZero;
+  CGPoint *intersections = calloc(lines.count, sizeof(CGPoint));
+  // init the intersections
+  for(NSUInteger i = 0;i < lines.count;i++) {
+    intersections[i].x = -MAXFLOAT;
+    intersections[i].y = -MAXFLOAT;
+  }
   
-  for (IDLine *line in lines) {
+  for(NSUInteger i = 0;i < lines.count;i++) {
+    IDLine *line = lines[i];
     BOOL intercepts = NO;
-    intersection = [line intersectionPointWithRay:ray intersects:&intercepts];
+    intersections[i] = [line intersectionPointWithRay:ray intersects:&intercepts];
     if(intercepts) {
       if(flag) {
         *flag = YES;
       }
-      break;
+    }
+  }
+  
+  CGPoint intersection;
+  CGFloat minLength = -MAXFLOAT;
+  for(NSUInteger i = 0;i < lines.count;i++) {
+    CGPoint delta = CGPointToPointDelta(intersections[i], ray.origin);
+    CGFloat length = CGPointLength(delta);
+    if(length > minLength) {
+      minLength = length;
+      intersection = intersections[i];
     }
   }
   return intersection;

@@ -13,5 +13,7 @@
 #include <CoreGraphics/CoreGraphics.h>
 
 CGPoint CGAffineTransformApplyToPoint(CGAffineTransform transform, CGPoint point);
+CGPoint CGPointToPointDelta(CGPoint first, CGPoint second);
+CGFloat CGPointLength(CGPoint vector);
 
 #endif /* defined(__raycast__IDGraphicsUtilities__) */

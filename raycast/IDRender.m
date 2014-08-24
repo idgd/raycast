@@ -185,7 +185,11 @@
 }
 
 - (void)calculateLines {
-  self.renderLines = [NSMutableArray array];
+  NSUInteger lineCount = self.player.bounds.width;
+  
+  self.renderLines = [NSMutableArray arrayWithCapacity:lineCount];
+  CGFloat *zBuffer = calloc(lineCount, sizeof(CGFloat));
+
   
   CGFloat distanceROTDelta = self.player.FOV / self.player.bounds.width;
   CGFloat distanceROT = self.player.ROT - self.player.FOV/2.0;
