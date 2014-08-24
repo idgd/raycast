@@ -240,8 +240,56 @@
     distanceROT += distanceROTDelta;
   }
   
+  [self calculateEnemies];
+  
   if(zBuffer) {
     free(zBuffer);
+  }
+}
+
+- (void)calculateEnemies {
+  CGFloat enemyDISRay, enemyDISRayDelta, width = 0.0;
+  enemyDISRay = self.player.ROT - self.player.FOV/2.0;
+  enemyDISRayDelta = self.player.FOV / self.player.bounds.width;
+  
+  for (int boop = 0; boop < self.player.bounds.width; boop++) {
+    
+    IDRay *distanceRay = [[IDRay alloc]init];
+    distanceRay.origin = self.player.POS;
+    distanceRay.direction = CGPointMake(cos(enemyDISRay), sin(enemyDISRay));
+    
+    for (IDEnemy *enemy in self.enemyBlocks) {
+      if (enemy.enemyOrigin.y  == distanceRay.slope * enemy.enemyOrigin.x + distanceRay.intercept ||
+          distanceRay.origin.x == (enemy.enemyOrigin.y - distanceRay.intercept) / distanceRay.slope) {
+        width = boop;
+      }
+    }
+    
+    enemyDISRay += enemyDISRayDelta;
+  }
+  
+  for (IDEnemy *enemy in self.enemyBlocks) {
+    
+    CGFloat DIS = sqrt(pow(self.player.POS.x - enemy.enemyOrigin.x, 2) +
+                       pow(self.player.POS.y - enemy.enemyOrigin.y, 2));
+    
+    enemy.enemyWidth = (self.player.bounds.width / 2) / DIS;
+    
+    enemy.enemyPath = [UIBezierPath bezierPath];
+    enemy.enemyPath.flatness = MAXFLOAT;
+    
+    [enemy.enemyPath moveToPoint:CGPointMake(width,
+                                             self.player.bounds.height / 2 +
+                                             (self.player.bounds.height / 2 *
+                                              (5 / DIS)))];
+    
+    [enemy.enemyPath addLineToPoint:CGPointMake(width,
+                                                self.player.bounds.height / 2 -
+                                                (self.player.bounds.height / 2 *
+                                                 (5 / DIS)))];
+    
+    [self.enemies addObject:enemy];
+    
   }
 }
 
