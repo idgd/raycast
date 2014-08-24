@@ -156,7 +156,7 @@
 	self.map.player.FOV = M_PI / 3.0;
 	self.map.player.ROT = M_PI / 3.0;
 	self.map.player.POS = CGPointMake(3.0, 3.0);
-	self.map.player.bounds = self.view.frame.size;
+	self.map.player.bounds = CGSizeMake(self.view.frame.size.height, self.view.frame.size.width);
 	
   self.map.blocks = @[wall0,wall1,wall2,wall3,wall4,wall5];
 	self.map.enemyBlocks = @[enemy0];
