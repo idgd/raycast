@@ -16,6 +16,8 @@
 
 @property(nonatomic, strong) UIImage *wallTile;
 
+@property(nonatomic, strong) NSArray *slices;
+
 @end
 
 @implementation IDView
@@ -23,7 +25,17 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
   self = [super initWithCoder:coder];
   if (self) {
-    self.wallTile = [UIImage imageNamed:@"walls4"];
+    self.wallTile = [UIImage imageNamed:@"walls3"];
+    
+    NSMutableArray *slices = [NSMutableArray array];
+    // hard coded to 256x256 wall tile
+    for(NSInteger i = 0;i < 16;i++) {
+      CGRect imageSlice = CGRectMake(i * 16, 0.0, 16.0, 256.0);
+      CGImageRef slice = CGImageCreateWithImageInRect(self.wallTile.CGImage, imageSlice);
+      [slices addObject:[UIImage imageWithCGImage:slice]];
+    }
+    self.slices = [slices copy];
+    
   }
   return self;
 }
@@ -34,28 +46,9 @@
 	for (IDRenderLine *line in self.renderPaths) {
     CGRect bounds = [line.renderLine bounds];
     bounds.size.width = 1.0;
-    NSUInteger wallTileWidth = self.wallTile.size.width;
-    NSUInteger wallTileHeight = self.wallTile.size.height;
-    CGRect imageSlize = CGRectMake(((NSInteger)(bounds.origin.x)) % wallTileWidth, 0.0, 1.0, wallTileHeight);
-    CGImageRef slice = CGImageCreateWithImageInRect(self.wallTile.CGImage, imageSlize);
-    CGContextDrawImage(ctx, bounds, slice);
-//    [line.color set];
-//		line.renderLine.lineWidth = 1;
-//		[line.renderLine stroke];
+    CGContextDrawImage(ctx, bounds, ((UIImage *)self.slices[line.wallTileColumn]).CGImage);
 	}
-	
-	for (IDEnemy *enemy in self.enemyPaths) {
-		
-		[[UIColor colorWithHue:0.0
-								saturation:1.0
-								brightness:1.0
-										 alpha:1.0] set];
-		enemy.enemyPath.lineWidth = enemy.enemyWidth;
-		
-		[enemy.enemyPath stroke];
-		
-	}
-	
+
 }
 
 @end

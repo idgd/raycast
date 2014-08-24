@@ -22,6 +22,6 @@
 - (BOOL)containsPoint:(CGPoint)point;
 - (CGPoint)intersectionWithPoint:(IDLine *)one flag:(BOOL *)flag;
 
-- (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag;
+- (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag whichLine:(IDLine **)linePtr;
 
 @end

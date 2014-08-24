@@ -14,6 +14,7 @@
 #import "IDLine.h"
 #import "IDRenderLine.h"
 #import "IDEnemy.h"
+#import "IDGraphicsUtilities.h"
 
 @implementation IDRender
 
@@ -39,7 +40,8 @@
     
     for (IDRectangle *block in self.blocks) {
       BOOL intersects = NO;
-      CGPoint intersection = [block intersectionWithRay:distanceRay flag:&intersects];
+      IDLine *struckLine = nil;
+      CGPoint intersection = [block intersectionWithRay:distanceRay flag:&intersects whichLine:&struckLine];
       if(intersects) {
         CGFloat distance = sqrt(pow(intersection.x - distanceRay.origin.x, 2) +
                                 pow(intersection.y - distanceRay.origin.y, 2));
@@ -48,6 +50,28 @@
           zBuffer[width] = distance;
           IDRenderLine *renderLine = [[IDRenderLine alloc] init];
           
+          // how far along the struck line is intersection?
+          // p = (1 - t) * start + t * end
+          // p = start - t * start + t * end
+          // p = start + t (end - start)
+          // p - start = t * (end - start)
+          CGPoint wallVector = CGPointToPointDelta(struckLine.end, struckLine.start);
+          CGFloat wallLength = CGPointLength(wallVector);
+          CGPoint intersectionDelta = CGPointToPointDelta(intersection, struckLine.start);
+          CGFloat ratioX = intersectionDelta.x / wallVector.x;
+          CGFloat ratioY = intersectionDelta.y / wallVector.y;
+          CGFloat ratio = 0.0;
+          
+          if (wallVector.x != 0.0) {
+            ratio = ratioX;
+          }
+          
+          if(wallVector.y != 0.0) {
+            ratio = ratioY;
+          }
+          
+          NSInteger pointOnWall = (NSInteger)fabs(floor(ratio * wallLength));
+          renderLine.wallTileColumn = pointOnWall % 16;
           renderLine.renderLine = [UIBezierPath bezierPath];
           renderLine.renderLine.flatness = MAXFLOAT;
           

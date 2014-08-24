@@ -47,9 +47,10 @@
   return @[AB, BC, CD, DA];
 }
 
-- (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag {
+- (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag whichLine:(IDLine **)linePtr {
   
   NSArray *lines = [self lines];
+  IDLine *idLineStuff = nil;
   BOOL *linesIntersect = calloc(lines.count, sizeof(BOOL));
   CGPoint *intersections = calloc(lines.count, sizeof(CGPoint));
   
@@ -71,7 +72,12 @@
     if(length < distance) {
       distance = length;
       intersection = intersections[i];
+      idLineStuff = lines[i];
     }
+  }
+  
+  if(linePtr) {
+    *linePtr = idLineStuff;
   }
   
   free(linesIntersect);
