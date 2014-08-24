@@ -189,6 +189,10 @@
   
   self.renderLines = [NSMutableArray arrayWithCapacity:lineCount];
   CGFloat *zBuffer = calloc(lineCount, sizeof(CGFloat));
+  
+  for(NSUInteger i = 0;i < lineCount;i++) {
+    zBuffer[i] = MAXFLOAT;
+  }
 
   
   CGFloat distanceROTDelta = self.player.FOV / self.player.bounds.width;
@@ -208,29 +212,36 @@
         CGFloat distance = sqrt(pow(intersection.x - distanceRay.origin.x, 2) +
                                 pow(intersection.y - distanceRay.origin.y, 2));
         
-        IDRenderLine *renderLine = [[IDRenderLine alloc] init];
-        
-        renderLine.renderLine = [UIBezierPath bezierPath];
-        renderLine.renderLine.flatness = MAXFLOAT;
-        
-        [renderLine.renderLine moveToPoint:
-         CGPointMake(width, self.player.bounds.height/2.0 +
-                     (self.player.bounds.height/2.0 * (5.0 / distance)))];
-        
-        [renderLine.renderLine addLineToPoint:
-         CGPointMake(width, self.player.bounds.height/2.0 -
-                     (self.player.bounds.height/2.0 * (5.0 / distance)))];
-        
-        renderLine.depth = distance;
-        renderLine.color = [UIColor colorWithHue:0.2
-                                      saturation:1.0
-                                      brightness:10.0/distance
-                                           alpha:1.0];
+        if(distance < zBuffer[width]) {
+          zBuffer[width] = distance;
+          IDRenderLine *renderLine = [[IDRenderLine alloc] init];
+          
+          renderLine.renderLine = [UIBezierPath bezierPath];
+          renderLine.renderLine.flatness = MAXFLOAT;
+          
+          [renderLine.renderLine moveToPoint:
+           CGPointMake(width, self.player.bounds.height/2.0 +
+                       (self.player.bounds.height/2.0 * (5.0 / distance)))];
+          
+          [renderLine.renderLine addLineToPoint:
+           CGPointMake(width, self.player.bounds.height/2.0 -
+                       (self.player.bounds.height/2.0 * (5.0 / distance)))];
+          
+          renderLine.depth = distance;
+          renderLine.color = [UIColor colorWithHue:0.2
+                                        saturation:1.0
+                                        brightness:10.0/distance
+                                             alpha:1.0];
+          self.renderLines[width] = renderLine;
+        }
 
-        [self.renderLines addObject:renderLine];
       }
     }
     distanceROT += distanceROTDelta;
+  }
+  
+  if(zBuffer) {
+    free(zBuffer);
   }
 }
 
