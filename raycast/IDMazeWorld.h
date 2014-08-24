@@ -10,4 +10,6 @@
 
 @interface IDMazeWorld : NSObject
 
++ (NSArray *) createWorld;
+
 @end

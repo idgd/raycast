@@ -27,7 +27,7 @@
   if (self) {
     self.floor = [UIImage imageNamed:@"floor"];
     self.ceiling = [UIImage imageNamed:@"ceiling"];
-    self.wallTile = [UIImage imageNamed:@"walls"];
+    self.wallTile = [UIImage imageNamed:@"walls4"];
   }
   return self;
 }

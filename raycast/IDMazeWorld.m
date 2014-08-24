@@ -12,7 +12,7 @@
 
 @implementation IDMazeWorld
 
-- (NSArray *) createWorld {
++ (NSArray *) createWorld {
 	
 	IDRectangle *wall0 = [[IDRectangle alloc]init];
 	
