@@ -26,7 +26,6 @@
   for(NSUInteger i = 0;i < lineCount;i++) {
     zBuffer[i] = MAXFLOAT;
   }
-
   
   CGFloat distanceROTDelta = self.player.FOV / self.player.bounds.width;
   CGFloat distanceROT = self.player.ROT - self.player.FOV/2.0;

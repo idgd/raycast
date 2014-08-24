@@ -14,8 +14,6 @@
 
 @interface IDView ()
 
-@property(nonatomic, strong) UIImage *floor;
-@property(nonatomic, strong) UIImage *ceiling;
 @property(nonatomic, strong) UIImage *wallTile;
 
 @end
@@ -25,17 +23,12 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
   self = [super initWithCoder:coder];
   if (self) {
-    self.floor = [UIImage imageNamed:@"floor"];
-    self.ceiling = [UIImage imageNamed:@"ceiling"];
     self.wallTile = [UIImage imageNamed:@"walls4"];
   }
   return self;
 }
 
 - (void)drawRect:(CGRect)rect {
-  
-  [self.ceiling drawInRect:CGRectMake(0.0, 0.0, 1024.0, 768.0 / 2.0)];
-  [self.floor drawInRect:CGRectMake(0.0, 768.0 / 2.0, 1024.0, 768.0 / 2.0)];
   CGContextRef ctx = UIGraphicsGetCurrentContext();
 	
 	for (IDRenderLine *line in self.renderPaths) {
