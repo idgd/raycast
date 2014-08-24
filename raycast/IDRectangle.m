@@ -12,6 +12,12 @@
 #import "IDLine.h"
 #import "IDRay.h"
 
+@interface IDRectangle()
+
+@property(nonatomic, strong) NSArray *lines;
+
+@end
+
 @implementation IDRectangle
 
 - (CGRect)boundingBox {
@@ -28,23 +34,25 @@
 }
 
 - (NSArray *)lines {
-  IDLine *AB = [[IDLine alloc]init];
-  AB.start = self.a;
-  AB.end = self.b;
-  
-  IDLine *BC = [[IDLine alloc]init];
-  BC.start = self.b;
-  BC.end = self.c;
-  
-  IDLine *CD = [[IDLine alloc]init];
-  CD.start = self.c;
-  CD.end = self.d;
-  
-  IDLine *DA = [[IDLine alloc]init];
-  DA.start = self.d;
-  DA.end = self.a;
-  
-  return @[AB, BC, CD, DA];
+  if(nil == _lines) {
+    IDLine *AB = [[IDLine alloc]init];
+    AB.start = self.a;
+    AB.end = self.b;
+    
+    IDLine *BC = [[IDLine alloc]init];
+    BC.start = self.b;
+    BC.end = self.c;
+    
+    IDLine *CD = [[IDLine alloc]init];
+    CD.start = self.c;
+    CD.end = self.d;
+    
+    IDLine *DA = [[IDLine alloc]init];
+    DA.start = self.d;
+    DA.end = self.a;
+    _lines = @[AB, BC, CD, DA];
+  }
+  return _lines;
 }
 
 - (CGPoint)intersectionWithRay:(IDRay *)ray flag:(BOOL *)flag whichLine:(IDLine **)linePtr {

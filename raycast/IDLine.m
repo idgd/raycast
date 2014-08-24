@@ -10,10 +10,18 @@
 #import <UIKit/UIKit.h>
 #import "IDRay.h"
 
+@interface IDLine ()
+
+@property (nonatomic, readwrite) CGFloat slope;
+@property (nonatomic) BOOL slopeSet;
+@property (nonatomic, readwrite) CGFloat intercept;
+@property (nonatomic) BOOL interceptSet;
+
+@end
+
 @implementation IDLine
 
-- (NSString *)description
-{
+- (NSString *)description {
 	return [NSString stringWithFormat:@"start = %@ end = %@", NSStringFromCGPoint(self.start), NSStringFromCGPoint(self.end)];
 }
 
@@ -26,20 +34,27 @@
 }
 
 - (CGFloat)slope {
-	
-	CGFloat slope = MAXFLOAT;
-	
-	if (fabs([self deltaX]) >= 0.0001) {
-		slope = [self deltaY] / [self deltaX];
-	}
-	
-	return slope;
+  if(!_slopeSet) {
+    
+    CGFloat slope = MAXFLOAT;
+    
+    if (fabs([self deltaX]) >= 0.0001) {
+      slope = [self deltaY] / [self deltaX];
+    }
+    _slope = slope;
+    _slopeSet = YES;
+  }
+	return _slope;
 }
 
 - (CGFloat)intercept {
-  // y = mx + b
-  // y - mx = b
-	return self.start.y - (self.start.x * [self slope]);
+  if(!_interceptSet) {
+    // y = mx + b
+    // y - mx = b
+    _intercept = self.start.y - (self.start.x * [self slope]);
+    _interceptSet = YES;
+  }
+  return _intercept;
 }
 
 - (CGPoint)intersectionPointWithRay:(IDRay *)ray intersects:(BOOL *)flag {

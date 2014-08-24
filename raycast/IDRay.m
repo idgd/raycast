@@ -9,16 +9,33 @@
 #import "IDRay.h"
 #import <UIKit/UIKit.h>
 
+@interface IDRay ()
+
+@property (nonatomic, readwrite) CGFloat intercept;
+@property (nonatomic) BOOL interceptSet;
+@property (nonatomic, readwrite) CGFloat slope;
+@property (nonatomic) BOOL slopeSet;
+
+@end
+
 @implementation IDRay
 
 - (CGFloat)intercept {
-  // y = mx + b
-  // y - mx = b
-  return self.origin.y - (self.origin.x * self.direction.y / self.direction.x);
+  if(!_interceptSet) {
+    // y = mx + b
+    // y - mx = b
+    _intercept = self.origin.y - (self.origin.x * self.direction.y / self.direction.x);
+    _interceptSet = YES;
+  }
+  return _intercept;
 }
 
 - (CGFloat)slope {
-  return self.direction.y / self.direction.x;
+  if(!_slopeSet) {
+    _slope = self.direction.y / self.direction.x;
+    _slopeSet = YES;
+  }
+  return _slope;
 }
 
 - (NSString *)description {
